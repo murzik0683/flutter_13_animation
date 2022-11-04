@@ -12,7 +12,7 @@ class _AnimatedHeardState extends State<AnimatedHeard>
   late AnimationController controller;
 
   late final outerFade = Tween(begin: 1.0, end: 0.0).animate(controller);
-  late final outerScale = Tween(begin: 1.0, end: 3.0).animate(controller);
+  late final outerScale = Tween(begin: 1.0, end: 4.0).animate(controller);
 
   late final innerUpscale = CurvedAnimation(
     parent: controller,

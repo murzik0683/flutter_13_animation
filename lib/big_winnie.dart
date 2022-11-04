@@ -13,7 +13,7 @@ class BigWinnie extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const AnimatedHeard(),
-          const SizedBox(height: 70),
+          const SizedBox(height: 60),
           Hero(
             tag: 'winnie',
             child: Image.asset('assets/images/puh1.png'),

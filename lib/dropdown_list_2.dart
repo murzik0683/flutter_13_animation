@@ -1,7 +1,6 @@
 // SizeTransition
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:animate_icons/animate_icons.dart';
 
 class DropDownList_2 extends StatefulWidget {
   const DropDownList_2({Key? key}) : super(key: key);
@@ -12,18 +11,18 @@ class DropDownList_2 extends StatefulWidget {
 
 class _DropDownList_2State extends State<DropDownList_2>
     with TickerProviderStateMixin {
-  late AnimateIconController iconController;
   late AnimationController dropController;
   late Animation<double> cardController;
+  late Animation<double> iconController;
 
-  bool show = false;
+  bool show = true;
 
   @override
   void initState() {
-    iconController = AnimateIconController();
     dropController =
         AnimationController(vsync: this, duration: const Duration(seconds: 1));
     cardController = Tween(begin: 0.0, end: 1.0).animate(dropController);
+    iconController = Tween(begin: 0.0, end: -0.5).animate(dropController);
     super.initState();
   }
 
@@ -39,25 +38,24 @@ class _DropDownList_2State extends State<DropDownList_2>
       children: [
         Card(
           child: ListTile(
-              title: Text('Winnie the Pooh_2',
-                  style: GoogleFonts.aladin(
-                      textStyle: const TextStyle(fontSize: 26))),
-              trailing: AnimateIcons(
-                duration: const Duration(milliseconds: 500),
-                controller: iconController,
-                endIcon: Icons.arrow_upward,
-                startIcon: Icons.arrow_downward,
-                onStartIconPress: () {
-                  show == true;
-                  dropController.forward();
-                  return true;
-                },
-                onEndIconPress: () {
-                  show == false;
-                  dropController.reverse();
-                  return true;
-                },
-              )),
+            title: Text('Winnie the Pooh_2',
+                style: GoogleFonts.aladin(
+                    textStyle: const TextStyle(fontSize: 26))),
+            trailing: RotationTransition(
+              turns: iconController,
+              child: IconButton(
+                  icon: const Icon(
+                    Icons.arrow_downward,
+                    color: Colors.blue,
+                  ),
+                  onPressed: () {
+                    show ? dropController.forward() : dropController.reverse();
+                    setState(() {
+                      show = !show;
+                    });
+                  }),
+            ),
+          ),
         ),
         SizeTransition(
           sizeFactor: cardController,

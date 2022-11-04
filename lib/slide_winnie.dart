@@ -19,13 +19,17 @@ class _SlideWinnieState extends State<SlideWinnie> {
         children: [
           Hero(
             tag: 'winnie',
-            child: SizedBox(
-              width: 150,
-              height: 150,
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
               child: ClipOval(
-                child: Image.asset(
-                  'assets/images/puh.jpg',
+                child: Container(
                   width: 150,
+                  height: 130,
+                  color: const Color(0xFFB9D4EA),
+                  child: Image.asset(
+                    'assets/images/puh1.png',
+                    width: 150,
+                  ),
                 ),
               ),
             ),

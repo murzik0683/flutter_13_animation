@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 class MoreWinnie extends StatelessWidget {
   const MoreWinnie({Key? key}) : super(key: key);
@@ -27,7 +26,7 @@ class MoreWinnie extends StatelessWidget {
               child: Card(
                 child: SizedBox(
                   height: 200,
-                  child: Image.asset('assets/images/puh.jpg'),
+                  child: Image.asset('assets/images/puh1.png'),
                 ),
               ),
             ),
@@ -40,7 +39,29 @@ class MoreWinnie extends StatelessWidget {
             Card(
               child: SizedBox(
                 height: 200,
-                child: Image.asset('assets/images/puh3.png'),
+                child: Stack(
+                  children: [
+                    Center(child: Image.asset('assets/images/puh3.png')),
+                    TweenAnimationBuilder(
+                        tween: ColorTween(
+                            begin: Colors.white, end: Colors.lightGreenAccent),
+                        duration: const Duration(seconds: 3),
+                        child: Align(
+                          alignment: const Alignment(0.02, -0.8),
+                          child: Image.asset(
+                            'assets/images/sharik.png',
+                            width: 75,
+                          ),
+                        ),
+                        builder: (_, Color? color, child) {
+                          return ColorFiltered(
+                            colorFilter:
+                                ColorFilter.mode(color!, BlendMode.modulate),
+                            child: child,
+                          );
+                        }),
+                  ],
+                ),
               ),
             ),
           ]),

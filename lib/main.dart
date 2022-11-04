@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
               RepeatLand(),
               SizedBox(height: 20),
               DropDownList(),
-              DropDownList_2(),
+              //DropDownList_2(),
               SizedBox(height: 20),
               SlideWinnie(),
             ],
